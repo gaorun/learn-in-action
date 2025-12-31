@@ -6,8 +6,9 @@ export type AsyncComponent = () => Promise<{ default: ComponentRender }>;
 
 export interface Options {
   root?: string;
+  pathname?: string;
   routes: Array<{
-    path: string;
+    hash?: string;
     component: ComponentRender | AsyncComponent;
   }>;
 }

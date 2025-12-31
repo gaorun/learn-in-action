@@ -2,11 +2,13 @@ import type { Options } from "./types";
 
 export function createRouter(options: Options) {
   const root = document.querySelector(options.root ?? "#app");
+  const pathname = options.pathname;
 
   const handler = async () => {
     for (const route of options.routes) {
       const pattern = new URLPattern({
-        pathname: route.path,
+        pathname,
+        hash: route.hash,
       });
 
       const result = pattern.exec(location.href);
